@@ -1,10 +1,9 @@
 package net.runelite.client.plugins.ccupdate;
 
 import com.google.common.collect.Sets;
-import com.google.common.eventbus.Subscribe;
+import net.runelite.client.eventbus.Subscribe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ClanMember;
 import net.runelite.api.Client;
 import net.runelite.api.events.GameTick;
@@ -19,6 +18,8 @@ import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -27,13 +28,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @PluginDescriptor(
-		name = "CC Update"
-)
-@Slf4j
+				name=" Queue Helper",
+				description="Ba Services' Queue Helper created by Ryan")
 public class ccUpdatePlugin extends Plugin
 {
 	public static final MediaType JSON  = MediaType.parse("application/json; charset=utf-8");
 	private static final String CLAN_CHAT = "Ba Services";
+	private static final Logger log = LoggerFactory.getLogger(ccUpdatePlugin.class);
 
 	@Inject
 	private Client client;
