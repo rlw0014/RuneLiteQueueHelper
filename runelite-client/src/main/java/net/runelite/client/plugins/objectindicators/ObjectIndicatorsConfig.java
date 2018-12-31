@@ -22,33 +22,24 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.discord.events;
 
-import lombok.Value;
+package net.runelite.client.plugins.objectindicators;
 
-/**
- * Called when the RPC connection has been established
- */
-@Value
-public class DiscordReady
+import java.awt.Color;
+import net.runelite.client.config.Config;
+import net.runelite.client.config.ConfigGroup;
+import net.runelite.client.config.ConfigItem;
+
+@ConfigGroup("objectindicators")
+public interface ObjectIndicatorsConfig extends Config
 {
-	/**
-	 * The userId for the active user
-	 */
-	private String userId;
-
-	/**
-	 * The username of the active user
-	 */
-	private String username;
-
-	/**
-	 * The discriminator of the active user
-	 */
-	private String discriminator;
-
-	/**
-	 * The avatar of the active user
-	 */
-	private String avatar;
+	@ConfigItem(
+		keyName = "markerColor",
+		name = "Marker color",
+		description = "Configures the color of object marker"
+	)
+	default Color markerColor()
+	{
+		return Color.YELLOW;
+	}
 }
